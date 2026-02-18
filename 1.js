@@ -1,4 +1,4 @@
-let fatherName = "Manuel";
+/* let fatherName = "Manuel";
 let doutherName = "Alice";
 let secondDoutherName = "Emile ";
 let nickName = "exmoxnix";
@@ -9,4 +9,9 @@ function successfulFather() {
     return `${fatherName} is a successful father because his douther ${doutherName} is very clever and kind.`;
 }
 
-console.log (successfulFather()); 
+console.log (successfulFather()); */
+
+let x = 5;
+let y = 10;
+let sumas = (x , y) => x+y;
+console.log (sumas(x = parseInt(prompt("Enter a number")), y = parseInt(prompt("Enter another number"))));
