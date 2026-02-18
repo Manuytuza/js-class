@@ -15,3 +15,4 @@ let x = 5;
 let y = 10;
 let sumas = (x , y) => x+y;
 console.log (sumas(x = parseInt(prompt("Enter a number")), y = parseInt(prompt("Enter another number"))));
+// repaso de git 10 minutos
