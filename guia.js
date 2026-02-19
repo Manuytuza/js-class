@@ -381,6 +381,7 @@ switch (model) {
 }
 */
 // ejemplo de switch con operaciones matematicas CALCULADORA
+/*
 const sumas = (x, y) => x + y;
 const resta = (x, y) => x - y;
 const multiplicacion = (x, y) => x * y;
@@ -416,6 +417,123 @@ if (isNaN(x) || isNaN(y)) {
     default:
       alert("Opción no válida");
   }
+} */
+//repaso de git 10 minutos
+// ==========================
+// WORKFLOWS PRINCIPALES
+// ==========================
+
+// 1. Básico (solo)
+// git add .
+// git commit -m "msg"
+// git push
+
+// 2. Feature Branch (PRO)
+// git checkout -b feature/nombre
+// git add .
+// git commit -m "msg"
+// git push -u origin feature/nombre
+// merge a main
+
+// 3. Pull Request
+// Crear rama → push → PR en GitHub → merge
+
+// 4. Git Flow (equipos grandes)
+// main → producción
+// develop → desarrollo
+// feature/* → nuevas funciones
+
+
+
+// ==========================
+// MERGE vs REBASE
+// ==========================
+
+// git merge rama
+// ✔ seguro
+
+// git rebase main
+// ✔ historial limpio
+
+
+
+// ==========================
+// SSH
+// ==========================
+
+// ssh-keygen -t ed25519 -C "email"
+// ssh-add ~/.ssh/id_ed25519
+// agregar clave a GitHub
+// ssh -T git@github.com
+
+
+
+// ==========================
+// HTTPS
+// ==========================
+
+// git remote set-url origin https://github.com/user/repo.git
+// git push -u origin main
+// usar TOKEN (no contraseña)
+
+//ITERACIONES
+let list = ["eat", "sleep", "code", "repeat"];
+
+function iterateList(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+}
+iterateList(list);
+console.log(" ");
+
+// map crea una nueva array con cada elemento modificado  
+let list2 =list.map(n=> n + " arrow+function");
+console.log(list2);
+
+// for of recorre cada elemento directamente del array
+
+for (let words of list) {
+  console.log(words + " "+ list.indexOf(words));
+}
+console.log(" ");
+
+//OBJETOS
+
+let datosPersonales = {
+  name: "Manuel",
+  lastName: "Ytuza",
+  age: 30,
+  isFather: true,
+  address: {
+    street: "Calle 123",
+    city: "Buenos Aires",
+    country: "Jupiter"
+  }
+}
+// recore elementos de un objeto con for in
+for (let key in datosPersonales) {
+  console.log(`${key}: ${datosPersonales[key]}`);
 }
 
+// WHILE repite un bloque de código mientras una condición sea verdadera
+
+let participantes = 0
+let listParticipantes = []
+while (participantes < 4) {
+  let newparticipantes = prompt("ingresa el nombre del participante");
+  if (typeof newparticipantes === "string" && newparticipantes.trim() !== "") {
+    alert(`Bienvenido ${newparticipantes}`);
+    listParticipantes.push(newparticipantes);
+    participantes++;
+  } else {
+    alert("No se ingresó un nombre válido");
+  }
+} 
+console.log("");
+console.log("Lista de participantes:");
+
+for (let participante of listParticipantes) {
+  console.log(participante);
+};
 
