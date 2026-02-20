@@ -327,7 +327,7 @@ console.log(typeof integerNumber); // muestra "number" para confirmar el tipo de
 // ejemplo de recorrer
 for (let i = 0; i < fruits.length; i++) {
     if (fruits[i]!== "apple")  { 
-        fruits[i] = fruits[i] + " ~NO es Apple"};
+        fruits[i] += " ~NO es Apple"};
     console.log(fruits[i]);
 } 
 // generar un numero ramdom con dos decimales de 1 al 100
@@ -517,7 +517,7 @@ for (let key in datosPersonales) {
 }
 
 // WHILE repite un bloque de código mientras una condición sea verdadera
-
+/*
 let participantes = 0
 let listParticipantes = []
 while (participantes < 4) {
@@ -536,4 +536,20 @@ console.log("Lista de participantes:");
 for (let participante of listParticipantes) {
   console.log(participante);
 };
+*/
+
+// dOWHILE ejecuta el bloque al menos una vez, luego verifica la condición
+do {
+  console.log("Este mensaje se muestra al menos una vez, es do-while");
+} while (false);
+
+//repaso de functions
+
+let twentyOff = (price, discount) => {
+  let discountValue = (price * discount)/100;
+  return price - discountValue;
+}      // función flecha que aplica un 20% de descuento a un precio
+
+console.log(twentyOff(200, 20)); // muestra 80, que es el resultado de aplicar el descuento al precio original de 100
+
 
