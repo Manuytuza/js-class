@@ -327,8 +327,8 @@ console.log(typeof integerNumber); // muestra "number" para confirmar el tipo de
 // ejemplo de recorrer
 for (let i = 0; i < fruits.length; i++) {
     if (fruits[i]!== "apple")  { 
-        fruits[i] += " ~NO es Apple"};
-    console.log(fruits[i]);
+        fruits[i] += " ~NO es Apple";
+        console.log(fruits[i])}
 } 
 // generar un numero ramdom con dos decimales de 1 al 100
 
@@ -552,4 +552,52 @@ let twentyOff = (price, discount) => {
 
 console.log(twentyOff(200, 20)); // muestra 80, que es el resultado de aplicar el descuento al precio original de 100
 
+// method es una función-arrow dentro de un objeto
+let calculator = {
+  add: (x, y) => x + y,
+  subtract: (x, y) => x - y,
+  multiply: (x, y) => x * y,
+  divide: (x, y) => y !== 0 ? x / y : "No se puede dividir entre 0"
+}; 
 
+// sumar elementos de un array 
+let example = [1, 2, 3, 4, 5];
+let sumaEx = 0;
+for (let n of example) {
+  sumaEx += n; // sumaEx = sumaEx + n
+} 
+console.log(sumaEx); // muestra 15, que es la suma de los números del array
+
+// sumar elementos de un array con reduce, NO SE CONLUYO EN PLATZY
+let sumaReduce = example.reduce((acc, n) => acc + n, 0);
+console.log(sumaReduce); // muestra 15, que es el resultado de reducir el array sumando sus elementos, comenzando con un acumulador inicial de 0  
+
+// 21/06/2024 iniciamos con map
+
+let newExample = example.map(n => n * 3);
+console.log(newExample); // muestra [3, 6, 9, 12, 15], que es el resultado de multiplicar cada elemento del array original por 3 usando el método map 
+
+//forEach no devuelve un nuevo array, solo ejecuta una función para cada elemento del array original
+let temperature = [20, 25, 30, 35, 40];
+let celsius = [];
+temperature.forEach(temp => {
+  celsius.push(Math.round(5/9 * (temp - 32)));
+});
+console.log(celsius); // muestra [ -6, -3, 0, 2, 4 ], que es el resultado de convertir cada temperatura de Fahrenheit a Celsius usando el método forEach para iterar sobre el array original y agregar los resultados a un nuevo array celsius.
+
+// mas sencillo con map
+let celciusMap = temperature.map(t => parseFloat((5/9 * (t -32)).toFixed(1)));
+console.log(celciusMap); // muestra [ -6.7, -3.9, 0, 2.2, 4.4 ], que es el resultado de convertir cada temperatura de Fahrenheit a Celsius usando el método map para crear un nuevo array con los resultados redondeados a un decimal.
+
+// suma de elemtos de un array con reduce
+
+let totalTemperatureReduce = temperature.reduce ((acc,t) => acc + t, 0);
+console.log(totalTemperatureReduce); // muestra 150, que es el resultado de reducir el array de temperaturas sumando sus elementos, comenzando con un acumulador inicial de 0.
+let totalCelciusReduce = celciusMap.reduce((acc, c) => acc + c, 0);
+console.log(`con reduce ${totalCelciusReduce}`); // muestra -5.6, que es el resultado de reducir el array de temperaturas en Celsius sumando sus elementos, comenzando con un acumulador inicial de 0.
+
+// suma con forEach
+let totalCelciusForEach = 0;
+celciusMap.forEach(c => totalCelciusForEach += c);
+console.log(`Con forEach ${totalCelciusForEach}`); // muestra -5.6, que es el resultado de iterar sobre el array de temperaturas en Celsius usando forEach para sumar sus elementos a un acumulador totalCelciusForEach, comenzando con un valor inicial de 0. 
+ 
