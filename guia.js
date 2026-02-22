@@ -92,7 +92,7 @@ a >= b;  // mayor o igual
 a <= b;  // menor o igual
 
 // Operadores lógicos
-true && false; // AND
+!true && false; // AND
 true || false; // OR
 !true;         // NOT
 
@@ -570,7 +570,7 @@ for (let participante of listParticipantes) {
 };
 */
 
-// dOWHILE ejecuta el bloque al menos una vez, luego verifica la condición
+// dO WHILE ejecuta el bloque al menos una vez, luego verifica la condición
 do {
   console.log("Este mensaje se muestra al menos una vez, es do-while");
 } while (false);
@@ -589,8 +589,16 @@ let calculator = {
   add: (x, y) => x + y,
   subtract: (x, y) => x - y,
   multiply: (x, y) => x * y,
-  divide: (x, y) => y !== 0 ? x / y : "No se puede dividir entre 0"
+  divide: (x, y) => y !== 0 ? x / y : "No se puede dividir entre 0"  // ? operador ternario para evitar división por cero
 }; 
+
+console.log();
+//metodos de un objeto
+console.log( calculator.add(10, 5)); 
+console.log( calculator.subtract(10, 5));
+console.log( calculator.multiply(5, 7)); 
+console.log( calculator.divide(10, 0));
+
 
 // sumar elementos de un array 
 let example = [1, 2, 3, 4, 5];
