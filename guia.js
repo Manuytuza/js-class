@@ -599,6 +599,15 @@ console.log( calculator.subtract(10, 5));
 console.log( calculator.multiply(5, 7)); 
 console.log( calculator.divide(10, 0));
 
+//operador ternario ? para asignar un valor según una condición igual que if else pero en una sola línea 
+let age2 = 17;
+let age3 = 18;
+
+let exampleTernario = age2 >= 18 ? "pass" : "fail";
+console.log(exampleTernario); // muestra "pass" si age es mayor o igual a 18, de lo contrario muestra "fail"
+
+let exampleTernario2 = age3 >= 18 ? "pass" : "fail";
+console.log(exampleTernario2); // muestra "pass" si age es mayor o igual a 18, de lo contrario muestra "fail"
 
 // sumar elementos de un array 
 let example = [1, 2, 3, 4, 5];
@@ -676,3 +685,6 @@ let copyArray2 = [...sliceExample,...copyArray]; // copia el array original y lo
 console.log(copyArray2); 
 let copyArray3 = [...sliceExample, "Manuel", "Exmoxnix"]; // copia el array original y agrega dos elementos nuevos al final
 console.log(copyArray3); 
+
+// guia 2 - 22/06/2024 03:32pm
+
