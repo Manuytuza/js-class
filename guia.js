@@ -132,6 +132,8 @@ function greet(name = "Guest") {
   return `Hello ${name}`;
 }
 
+const saludoArrow2 = (name) => `hello my friend ${name}`;
+console.log(saludoArrow2("Manuel"));
 console.log(fullNameFn(firstName, lastName));
 console.log(sum(5, 7));
 console.log(greet());
@@ -143,8 +145,23 @@ console.log(greet());
 // Array de strings
 let fruits = ["apple", "banana", "orange", "orange"];
 
+console.log(fruits.reduce((acumulator, fruit) => {
+  if (acumulator[fruit]) {
+    acumulator[fruit] += 1;
+  } else {
+    acumulator[fruit] = 1;
+  }
+  return acumulator;
+}, {}));
+
+console.log();
+
 // Array de números
 let scores = [10, 20, 30];
+
+for ( let num of scores) {
+  console.log (`${num*2} with for of`)
+}
 
 // Array de booleanos
 let flags = [true, false, true];
@@ -163,6 +180,7 @@ let users = [
   { name: "Manuel", role: "Father" },
   { name: "Alice", role: "Daughter" }
 ];
+console.log(users[0].name);
 
 // Métodos comunes de arrays
 fruits.push("grape");       // agrega al final
@@ -217,7 +235,7 @@ console.log()
 for (let fruit of fruits) {
   console.log(fruit);
 }
-console.log()
+console.log( "forEach is coming");
 // forEach (funcional)
 fruits.forEach((fruit) => {
   console.log(fruit);
@@ -229,7 +247,13 @@ while (counter < 3) {
   console.log(counter);
   counter++;
 }
-console.log("duda") 
+console.log("mas claro con do-while"); 
+// do...while
+let count = 0;
+do {
+  console.log(count);
+  count++;
+} while (count < 3);  
 // ==========================================================
 // 11. TEMPLATE LITERALS
 // ==========================================================
@@ -258,7 +282,7 @@ console.log(message);
 // localVar no existe fuera del bloque
 
 // ==========================================================
-// 13. DESTRUCTURING
+// 13. DESTRUCTURING....lo vere despues 
 // ==========================================================
 
 // Extrae valores fácilmente
@@ -276,14 +300,14 @@ let newPerson = { ...person, active: true };
 // ==========================================================
 // 15. MAP, FILTER, REDUCE
 // ==========================================================
-
+console.log("MAP, FILTER, REDUCE");
 // Programación funcional
 let numbers = [1, 2, 3, 4, 5];
 
 let doubled = numbers.map(n => n * 2);          // transforma
-let evens = numbers.filter(n => n % 2 === 0);   // filtra
+let evens = numbers.filter(n => n % 2 === 0);   // filtra numeroPar 
 let total = numbers.reduce((acc, n) => acc + n, 0); // acumula
-
+console.log (doubled, evens, total);  
 // ==========================================================
 // 16. MANEJO DE ERRORES
 // ==========================================================
@@ -305,15 +329,21 @@ try {
 // Nombres claros en inglés
 // Código ordenado y comentado
 
+console.log();
+console.log( "Math.random()");
+let numerAleatory = Number(Math.random().toFixed(1)*20)+1 
+let numberAleatory2 = Math.floor(Math.random() * 20) + 1; // genera un número aleatorio entre 1 y 20
+console.log(numerAleatory);
+console.log(numberAleatory2); 
 /************************************************************
  * FIN DE LA GUÍA JAVASCRIPT PROFESIONAL
  ************************************************************/
 //no debo rendirme 
-// terminar juego avanzar
+// terminar juego avanzarnode
 //const game = ["piedra", "papel", "tijera"];
 //const player = prompt("elige tu jugada: piedra, papel o tijera");
 //const alert = ("la computadora elige: " + game[Math.floor(Math.random() * game.length)]);
-
+console.log("no debo rendirme");
 //numero aleatorio entre 0 y 100
 const aleatory = Math.random().toFixed(2) * 100; // genera un número aleatorio entre 0 y 100 con 2 decimales
 console.log(aleatory);   
@@ -498,6 +528,8 @@ for (let words of list) {
 }
 console.log(" ");
 
+/// fin del dia 22/02/2026 01:10pm
+
 //OBJETOS
 
 let datosPersonales = {
@@ -600,4 +632,39 @@ console.log(`con reduce ${totalCelciusReduce}`); // muestra -5.6, que es el resu
 let totalCelciusForEach = 0;
 celciusMap.forEach(c => totalCelciusForEach += c);
 console.log(`Con forEach ${totalCelciusForEach}`); // muestra -5.6, que es el resultado de iterar sobre el array de temperaturas en Celsius usando forEach para sumar sus elementos a un acumulador totalCelciusForEach, comenzando con un valor inicial de 0. 
- 
+
+// filter crea un nuevo array con los elementos que cumplen una condición
+let valueFilter = [2,3,5,6,7,8,44,55,66,77,88,99];
+let parValue = valueFilter.filter(n => n % 2 === 0);
+console.log(parValue); // muestra [ 2, 6, 8, 44, 66, 88 ], que es el resultado de filtrar el array original para incluir solo los números pares usando el método filter con una función que verifica si el número es divisible por 2 sin residuo. 
+
+//reduce con string y cuantas veces se repite una palabra en un array
+let wordFilter = ["apple", "banana", "orange", "apple", "grape", "banana"];
+let countAll = wordFilter.reduce ( (acc, word) => {
+  if (acc[word]) {
+    acc[word] += 1; // si la palabra ya existe en el acumulador, incrementa su contador
+  } else {
+    acc[word] = 1; // si la palabra no existe, inicializa su contador en 1
+  }
+  return acc; // devuelve el acumulador actualizado para la siguiente iteración   
+}, {});
+console.log(countAll); // muestra { apple: 2, banana: 2, orange: 1, grape: 1 }, que es el resultado de reducir el array de palabras para contar cuántas veces se repite cada palabra, utilizando un objeto como acumulador para almacenar los conteos.
+
+// find encuentro primer numero que cumple
+let findNumber = valueFilter.find(n => n >70);
+console.log(findNumber); // muestra 77, que es el primer número en el array valueFilter que es mayor que 70, encontrado usando el método find con una función que verifica si el número es mayor que 70.
+// findIndex encuentro el índice del primer numero que cumple
+let finderIndex = valueFilter.findIndex(n => n >70);
+console.log(finderIndex); // muestra 9, que es el índice del primer número en el array valueFilter que es mayor que 70, encontrado usando el método findIndex con una función que verifica si el número es mayor que 70.
+// slice crea un nuevo array con una parte del array original
+let sliceExample = [0,1,2,3,4,5,6,7,8];
+console.log(sliceExample.slice(2,5)); // no incluye el indice de cierre -1, [ 2, 3, 4 ]
+console.log(sliceExample.slice(2,6)); // no incluye el indice de cierre -1, [ 2, 3, 4, 5 ]
+console.log(sliceExample.slice(2,30)); 
+// spread operator para copiar un array
+let copyArray = [...sliceExample]; // crea una copia del array sliceExample usando el spread operator (...), lo que permite crear un nuevo array con los mismos elementos sin modificar el original.
+console.log(copyArray); 
+let copyArray2 = [...sliceExample,...copyArray]; // copia el array original y lo concatena con la copia, creando un nuevo array con los elementos repetidos
+console.log(copyArray2); 
+let copyArray3 = [...sliceExample, "Manuel", "Exmoxnix"]; // copia el array original y agrega dos elementos nuevos al final
+console.log(copyArray3); 
