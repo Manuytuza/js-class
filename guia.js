@@ -688,3 +688,54 @@ console.log(copyArray3);
 
 // guia 2 - 22/06/2024 03:32pm
 
+// -----------------------YA SE GENERO PRIMER DICCIONARIO------------------------------
+
+// 2026-02-23 inicio 2:00pm
+
+//                           programcionOrientadaAObjetos 
+const person1 = {
+  name: "Manuel",
+  age: 30,
+  city: "Madrid",
+  pensar() {
+    return `i am ${this.name} and i am living in ${this.city}`}
+};
+console.log(person1.pensar()); // muestra "i am Manuel and i am living in Madrid", que es el resultado de llamar al método pensar del objeto person1, utilizando this para acceder a las propiedades name y city del mismo objeto.
+// agregar propieda y new metodo a un objeto
+person1.gameFavorite = "God of War";
+person1.playGame = (game) => `i am play ${game}`;
+console.log(person1.gameFavorite);  
+console.log(person1.playGame( "The Last of Us")); 
+console.log(person1)
+// para elmininar uso delete
+delete person1.age;
+delete person1.pensar;
+console.log(person1); 
+
+// funcion constructora y instancias 
+
+function Person(name, power, city) {
+  this.name = name;
+  this.power = power;
+  this.city = city;
+}
+let person2 = new Person("Manuel", "coding", "New York","god of war");
+console.log(person2);
+// sumar propiedad a todas las instancias de Person con prototype
+Person.prototype.hobby = "reading";
+
+//prototype para agregar un metodo a todas las instancias de Person
+Person.prototype.introduce = function() {
+  return `Hi, I am ${this.name} and I have the power of ${this.power}`;
+}   
+console.log(person2.introduce()); 
+
+// agregar propiedad a una instancia específica sin afectar a las demás instancias de Person
+ let person3 = new Person("Alice", "painting", "Paris");
+ person3.facebook = "alice.art"; // agregar propiedad a una instancia específica sin afectar a las demás instancias de Person
+ console.log("agregamos una propiedad a una instancia especifica person3", person3);
+ console.log(person3.hobby); 
+ //lo que esta dentro de prototype no esta directamente por eso no aparece n console log pero se hereda para el uso 
+ console.log (Person.prototype);
+ console.log (person2.__proto__); // muestra el objeto prototype de la función constructora Person, que contiene las propiedades y métodos heredados por las instancias creadas con esa función constructora. 
+

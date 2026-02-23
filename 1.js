@@ -79,3 +79,5 @@ console.log(objtExample2["age"]); // muestra 25
 
 new Date()
 console.log(new Date()); // muestra la fecha y hora actual en formato de objeto Date
+
+//
