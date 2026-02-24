@@ -739,3 +739,63 @@ console.log(person2.introduce());
  console.log (Person.prototype);
  console.log (person2.__proto__); // muestra el objeto prototype de la función constructora Person, que contiene las propiedades y métodos heredados por las instancias creadas con esa función constructora. 
 
+ //Date y manejo de fechas
+
+const opciones = {
+  timeZone: "America/Lima",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit"
+};
+const fp = () => { 
+console.log(new Date().toLocaleString("es-PE", opciones));}
+
+// 24/02/2026, 02:24:11 p. m. iniciamos
+fp(); 
+// Clases en JavaScript: Creación y Uso de Objetos con Sintaxis Moderna 
+// blueprint de una clase
+
+class PersonClass {
+  constructor(name, age, city, dreams) {
+    this.name = name;
+    this.age = age;
+    this.city = city;
+    this.dreams = dreams;
+  }
+  introduce() {
+    return `Hi, I am ${this.name}, I am ${this.age} years old and I live in ${this.city}. My dreams are ${this.dreams}`;
+  }  
+}
+
+let person4 = new PersonClass("Manuel", 30, "Madrid", "be a great programmer");
+console.log(person4.introduce()); 
+console.log(person4);
+
+//extends y super para herencia de clases
+class Student extends PersonClass {
+  constructor(name, age, city, dreams, grade) {
+    super(name, age, city, dreams);
+    this.grade = grade;
+  }
+  study(){return `i am ${this.name}, i live in ${this.city} and i have a grade of ${this.grade} in school`;}
+}
+
+let student1 = new Student("Alice", 5, "Peru", "learn to read", "A");
+console.log(student1.study());
+// Una instancia es un objeto creado a partir de una clase.
+// cadena de prototipos es el mecanismo por el cual los objetos en JavaScript heredan propiedades y métodos de otros objetos, formando una cadena de prototipos que permite la reutilización de código y la creación de objetos más complejos a partir de objetos más simples.
+
+Student.prototype.pet = function() {
+  return "todos tenemos un perro como mascota";
+}
+console.log(student1.pet());
+// this en clases se refiere a la instancia actual de la clase, permitiendo acceder a sus propiedades y métodos desde dentro de la clase.
+Student.prototype.pet = function() {
+  return `todos los de clase ${this.grade} tenemos un perro como mascota`;
+};
+console.log(student1.pet());
+
+
