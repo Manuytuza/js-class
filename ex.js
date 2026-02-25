@@ -45,7 +45,6 @@ let validarUsuario = (username, password) => {
             usersDatabase[i].password === password
         ) {
             return(`bienvenido ${usersDatabase[i].username}, tu timeline es: ${usersTimeline[i].timeline}`);
-            
           } 
     }; return("Usuario o contraseña incorrectos");
 };
@@ -108,4 +107,24 @@ if (resultadoPro) {
     console.log("Credenciales incorrectas");
 }
 
+// crear una lista de personas
 
+// mi version 
+let usernameInput = "andres";
+let passwordInput = 123;
+let review = (usernameInput, passwordInput) =>{
+    if(!usernameInput) return NaN;
+    if(!passwordInput) return NaN;
+   for (let i =0; i <usersDatabase.length; i++){
+    if (usersDatabase[i].username === usernameInput && usersDatabase[i].password === passwordInput) {
+        return true
+    } 
+    
+}  return false
+} 
+
+if (review(usernameInput, passwordInput)){
+    console.log("ingresas");
+} else {
+    console.log("no va");
+}

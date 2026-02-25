@@ -798,4 +798,5 @@ Student.prototype.pet = function() {
 };
 console.log(student1.pet());
 
-
+// Guard Clause (cláusula de guarda) 
+//if (!student1) return null;
