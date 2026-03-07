@@ -39,15 +39,7 @@ const usersTimeline = [
 //let userNamePrompt = prompt("introduce your username");
 //let passwordPrompt = prompt("introduce your password");
 
-let validarUsuario = (username, password) => {
-    for(let i = 0; i < usersDatabase.length; i++) {
-        if(usersDatabase[i].username === username && 
-            usersDatabase[i].password === password
-        ) {
-            return(`bienvenido ${usersDatabase[i].username}, tu timeline es: ${usersTimeline[i].timeline}`);
-          } 
-    }; return("Usuario o contraseña incorrectos");
-};
+
 // platzy answer 
 /*
 const username = prompt("CuÃ¡l es tu usuario?");
@@ -62,7 +54,7 @@ function usuarioExistente(username, password) {
       return true;
     }
   }
-  return false;
+  return false; // cuando sale el false el bucle no se detiene y sigue buscandado
 }
 
 function signIn(username, password) {

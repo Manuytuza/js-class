@@ -800,3 +800,159 @@ console.log(student1.pet());
 
 // Guard Clause (cláusula de guarda) 
 //if (!student1) return null;
+
+
+//-----------------------------------------------------------------------------------------------
+
+fp(); 
+// inciamos 06/03/2026, 09:17:28 a. m.
+// promesas
+// Crear una Promise simple que simula una tarea asíncrona
+const miPromesa = new Promise((resolve, reject) => {
+  // Simular una operación que toma tiempo (ej. una petición HTTP)
+  setTimeout(() => {
+    const exito = true; // Cambia a false para probar el error
+    if (exito) {
+      resolve("¡Operación exitosa!"); // Resuelve con un valor
+    } else {
+      reject("Error en la operación"); // Rechaza con un error
+    }
+  }, 2000); // Espera 2 segundos
+});
+
+// Usar la Promise
+miPromesa
+  .then((resultado) => {
+    console.log("Éxito:", resultado); // Se ejecuta si se resuelve
+  })
+  .catch((error) => {
+    console.log("Error:", error); // Se ejecuta si se rechaza
+  })
+  .finally(() => {
+    console.log("Operación completada"); // Siempre se ejecuta
+  });
+
+// ----------------------------------------------------------------
+// Async / Await (sintaxis moderna para usar Promises)
+// ----------------------------------------------------------------
+
+// Convertimos la misma lógica de promesa anterior en una función asincrónica
+async function ejemploAsyncAwait() {
+  try {
+    // 'await' pausa la ejecución hasta que la promesa se resuelva o rechace
+    const resultado = await miPromesa;
+    console.log("(async) Éxito:", resultado);
+  } catch (error) {
+    console.log("(async) Error:", error);
+  } finally {
+    console.log("(async) Operación completada");
+  }
+}
+
+// Llamar a la función asincrónica
+ejemploAsyncAwait();
+
+// ----------------------------------------------------------------
+// For Await (iterar sobre iterables asíncronos)
+// ----------------------------------------------------------------
+
+// 'for await' se usa para iterar sobre iterables que contienen promesas.
+// Espera automáticamente a que cada promesa se resuelva antes de pasar a la siguiente.
+
+// Crear un array de promesas que simulan tareas asíncronas
+const promesas = [
+  new Promise((resolve) => setTimeout(() => resolve("Tarea 1 completada"), 2000)),
+  new Promise((resolve) => setTimeout(() => resolve("Tarea 2 completada"), 2500)),
+  new Promise((resolve) => setTimeout(() => resolve("Tarea 3 completada"), 3000)),
+];
+
+// Función asincrónica que usa 'for await' para procesar las promesas
+async function procesarTareas() {
+  console.log("Iniciando procesamiento de tareas...");
+
+  // 'for await' itera sobre el array de promesas
+  // Espera a que cada promesa se resuelva antes de continuar
+  for await (const resultado of promesas) {
+    console.log("Resultado:", resultado);
+  }
+
+  console.log("Todas las tareas completadas.");
+}
+
+// Llamar a la función
+procesarTareas();
+
+/** 
+async function myPokeApi() {
+ try {
+   const pokemon = await fetch();
+   const pokeJson = await pokemon.json();
+
+  console.log (pokeJson.forms);
+ } catch (error) {
+  console.log("error", error)
+ }
+}
+
+myPokeApi();
+
+//clasic form promise
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+     console.log(data)
+  })
+  .catch(err => console.log(err))
+
+**/
+const promesaPokemon = new Promise((resolve, reject)  => {
+
+   setTimeout ( () => {
+    console.log("empezamos a pensar")
+    fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+       .then(result => result.json())
+       .then(data => resolve(data.name))
+       .catch(error=> reject(error))
+   },5000)
+});
+
+promesaPokemon
+  .then( result => 
+    {console.log("bien")
+      console.log(result)
+    })
+  .catch(error => {console.log("error", error)})
+  .finally(()=> console.log("fin porfina a dormir"))
+
+  // mañana vemos a mejor forma 
+  /**
+   const promesaPokemon = new Promise((resolve, reject)  => {
+
+   setTimeout(() => {
+
+    console.log("empezamos a pensar")
+
+    fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+
+       .then(result => result.json())
+
+       .then(data => resolve(data.forms))
+
+       .catch(error => reject(error))
+
+   },3000)
+
+});
+
+promesaPokemon
+  .then(result => {
+    console.log("bien")
+    console.log(result)
+  })
+  .catch(error => {
+    console.log("error:", error)
+  })
+  .finally(() => console.log("fin por fin a dormir"))
+   */
+
+  fp();
